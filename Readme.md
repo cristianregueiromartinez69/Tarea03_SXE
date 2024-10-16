@@ -82,3 +82,10 @@ sudo docker run -d --name dam_web2 -p 9080:80 -v /home/dam/mi_apache_host:/usr/l
 sudo docker ps
 ```
 
+### 7. Comprueba que los dos servidores 'sirven' la misma página, es decir, cuando consultamos en el navegador: http://localhost:9080 http://localhost:8000
+```bash
+#accedemos a un navegador e introducimos
+ http://localhost:9080 
+ http://localhost:8000
+```
+Deberíamos de poder ver un hola mundo en ambos servicios
