@@ -37,7 +37,7 @@ sudo docker ps -a
 ### 3. Si quieres poder acceder desde el navegador de tu equipo, ¿que debes hacer? Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
 
 ```bash
-#instalamos ssh y lo configuramos para establecer conexion con la maquina anfitriona
+#instalamos ssh y lo configuramos para establecer conexión con la máquina anfitriona
 sudo apt install openssh-server
 
 #mapeamos el puerto del contenedor al puerto del equipo con el siguiente comando
@@ -55,7 +55,7 @@ Con esto hicimos lo siguiente:
 - usamos -v para hacer el bind mount
 - configuramos el directorio origen y el directorio destino
 - abrimos http://localhost:8080
-- deberiamos ver la pagina de apache
+- deberíamos ver la pagina de apache
 
 ### 4. Realiza un 'hola mundo' en html y comprueba que accedes desde el navegador.
 ```bash
@@ -82,10 +82,29 @@ sudo docker run -d --name dam_web2 -p 9080:80 -v /home/dam/mi_apache_host:/usr/l
 sudo docker ps
 ```
 
-### 7. Comprueba que los dos servidores 'sirven' la misma página, es decir, cuando consultamos en el navegador: http://localhost:9080 http://localhost:8000
+### 6. Comprueba que los dos servidores 'sirven' la misma página, es decir, cuando consultamos en el navegador: http://localhost:9080 http://localhost:8000
 ```bash
 #accedemos a un navegador e introducimos
  http://localhost:9080 
  http://localhost:8000
 ```
 Deberíamos de poder ver un hola mundo en ambos servicios
+
+### 7. Realiza modificaciones de la página y comprueba que los dos servidores 'sirven' la misma página
+```bash
+#abrimos el html de hola mundo e introducimos algunos cambios como estos
+<html>
+     <head>
+         <title>Hola Diego</title>
+     </head>
+     <body>
+         <h2><strong>Ambos servicios han sido cambiados<strong></h2>
+         <p style="color: red;">Hala madrid</p>
+     </body>
+ </html>
+
+#abrimos un navegador e introducimos
+ http://localhost:9080 
+ http://localhost:8000
+```
+Deberíamos de ver los cambios reflejados en los 2 si hemos seguido la guía.
