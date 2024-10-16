@@ -34,3 +34,25 @@ sudo docker container create -i -t --name dam-web1 httpd
 sudo docker ps -a
 ```
 
+### 3. Si quieres poder acceder desde el navegador de tu equipo, ¿que debes hacer? Utiliza bind mount para que el directorio del apache2 'htdocs' esté montado un directorio que tu elijas.
+
+```bash
+#instalamos ssh y lo configuramos para establecer conexion con la maquina anfitriona
+sudo apt install openssh-server
+
+#mapeamos el puerto del contenedor al puerto del equipo con el siguiente comando
+docker run -d --name dam_web1 -p 8000:80 httpd:2.4
+
+#una vez hechos los pasos anteriores, creamos un directorio nuevo
+mkdir /home/dam/mi_apache_host
+
+#ahora ejecutamos esto para crear el contenedor con el directorio mapeado
+docker run -d --name dam_web1 -p 8000:80 -v /home/dam/mi_apache_host:/usr/local/apache2/htdocs httpd:2.4
+```
+Con esto hicimos lo siguiente:
+- corremos el contenedor
+- le damos el nombre
+- usamos -v para hacer el bind mount
+- configuramos el directorio origen y el directorio destino
+- abrimos http://localhost:8080
+- deberiamos ver la pagina de apache
