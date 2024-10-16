@@ -73,5 +73,12 @@ http://localhost:8000
 ```
 Debería de aparecer el hola mundo del html
 
+### 5. Crea otro contenedor 'dam_web2' con el mismo bind mount y a otro puerto, por ejemplo 9080.
+```bash
+#mismo procedimiento que en el contenedor anterior, pero cambiando puertos
+sudo docker run -d --name dam_web2 -p 9080:80 -v /home/dam/mi_apache_host:/usr/local/apache2/htdocs httpd:2.4
 
+#comprobamos que corre
+sudo docker ps
+```
 
