@@ -41,13 +41,13 @@ sudo docker ps -a
 sudo apt install openssh-server
 
 #mapeamos el puerto del contenedor al puerto del equipo con el siguiente comando
-docker run -d --name dam_web1 -p 8000:80 httpd:2.4
+sudo docker run -d --name dam_web1 -p 8000:80 httpd:2.4
 
 #una vez hechos los pasos anteriores, creamos un directorio nuevo
 mkdir /home/dam/mi_apache_host
 
 #ahora ejecutamos esto para crear el contenedor con el directorio mapeado
-docker run -d --name dam_web1 -p 8000:80 -v /home/dam/mi_apache_host:/usr/local/apache2/htdocs httpd:2.4
+sudo docker run -d --name dam_web1 -p 8000:80 -v /home/dam/mi_apache_host:/usr/local/apache2/htdocs httpd:2.4
 ```
 Con esto hicimos lo siguiente:
 - corremos el contenedor
@@ -56,3 +56,22 @@ Con esto hicimos lo siguiente:
 - configuramos el directorio origen y el directorio destino
 - abrimos http://localhost:8080
 - deberiamos ver la pagina de apache
+
+### 4. Realiza un 'hola mundo' en html y comprueba que accedes desde el navegador.
+```bash
+#creamos un archivo html tal que así
+ <html>
+     <head>
+         <title>Hola Mundo</title>
+     </head>
+     <body>
+         <h1>Hola Mundo</h1>
+     </body>
+ </html>
+#lo metemos en la carpeta /home/dam/mi_apache_host y vamos a un navegador.
+http://localhost:8000 
+```
+Debería de aparecer el hola mundo del html
+
+
+
